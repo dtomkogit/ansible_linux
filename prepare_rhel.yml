@@ -1,0 +1,35 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+     packages: [ 'ntp','yum-cron' ]
+  tasks:
+    - name: set timezone
+      timezone: name=Asia/Kuwait
+    
+    - name: Register at Red Hat and auto-subscribe to available content.
+      redhat_subscription:
+      state: present
+      username: joe_user
+      password: somepass
+      autosubscribe: true
+    
+    - name: install needed packages
+      yum: name={{ item }} state=latest
+      with_items: "{{ packages }}"
+
+    - name: update all packages
+      yum: name=* state=latest
+
+    - name: enable ntpd
+      service: name=ntpd enabled=yes
+
+    - name: enable ntpd
+      service: name=ntpd state=started
+
+    - name: enable yum-cron
+      service: name=ntpd enabled=yes
+
+    - name: enable yum-cron
+      service: name=ntpd state=started
+      
