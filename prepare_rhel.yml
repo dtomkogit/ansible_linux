@@ -1,10 +1,8 @@
 ---
 - hosts: all
   sudo: true
-  roles:
-    - geerlingguy.repo-epel
   vars:
-     packages: [ 'ntp','yum-cron' ]
+     packages: [ 'ntp']
   tasks:
     - name: set timezone
       timezone: name=Asia/Kuwait
@@ -21,10 +19,3 @@
 
     - name: enable ntpd
       service: name=ntpd state=started
-
-    - name: enable yum-cron
-      service: name=ntpd enabled=yes
-
-    - name: enable yum-cron
-      service: name=ntpd state=started
-      
