@@ -1,18 +1,13 @@
 ---
 - hosts: all
   sudo: true
+  roles:
+    - geerlingguy.repo-epel
   vars:
      packages: [ 'ntp','yum-cron' ]
   tasks:
     - name: set timezone
       timezone: name=Asia/Kuwait
-    
-    - name: Register at Red Hat and auto-subscribe to available content.
-      redhat_subscription:
-      state: present
-      username: joe_user
-      password: somepass
-      autosubscribe: true
     
     - name: install needed packages
       yum: name={{ item }} state=latest
