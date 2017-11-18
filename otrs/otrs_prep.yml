@@ -1,0 +1,20 @@
+---
+- hosts: all
+  sudo: true
+  roles:
+    - geerlingguy.repo-epel
+  vars:
+     packages: [ 'httpd',' mariadb-server' ]
+  tasks:
+    
+    - name: install needed packages
+      yum: name={{ item }} state=latest
+      with_items: "{{ packages }}"
+
+    - name: enable apache
+      service: name=httpd enabled=yes
+
+    - name: enable mariadb
+      service: name=mariadb enabled=yes
+
+      

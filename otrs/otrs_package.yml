@@ -1,0 +1,7 @@
+---
+- hosts: all
+  vars: 
+    otrs_version: 5.0.23-01
+  tasks:
+    - name: 'Install OTRS from RPM'
+      yum: name=http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-{{ otrs_version }}.noarch.rpm state=latest
