@@ -1,5 +1,11 @@
 ---
+- hosts: all
+  vars: 
+    otrs_version: 5.0.23-01
+    packages: [ 'httpd',' mariadb-server','perl(YAML::XS)', 'perl(JSON::XS)', 'perl(Text::CSV_XS)' ]
+  roles:
+    - geerlingguy.repo-epel
+  tasks:
+  - import_tasks: otrs_prep.yml
 
-- include: otrs_prep.yml
-
-- include: otrs_package.yml
+  - import_tasks: otrs_package.yml
