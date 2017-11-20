@@ -2,7 +2,7 @@
 - hosts: all
   vars: 
     otrs_version: 5.0.23-01
-    packages: [ 'httpd',' mariadb-server','perl(YAML::XS)', 'perl(JSON::XS)', 'perl(Text::CSV_XS)' ]
+    packages: [ 'httpd',' mariadb-server','perl(YAML::XS)', 'perl(JSON::XS)', 'perl(Text::CSV_XS)', 'perl(Crypt::Eksblowfish::Bcrypt)', 'perl(Mail::IMAPClient)', 'perl(ModPerl::Util)']
   roles:
     - geerlingguy.repo-epel
   tasks:

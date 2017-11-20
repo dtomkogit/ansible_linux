@@ -1,0 +1,9 @@
+[Unit]
+Description=OTRS Help Desk.
+After=network.target
+
+[Service]
+Type=forking
+User=otrs
+ExecStart=/opt/otrs/bin/otrs.Daemon.pl start
+ExecStop=/opt/otrs/bin/otrs.Daemon.pl stop
