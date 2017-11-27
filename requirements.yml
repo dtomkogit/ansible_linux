@@ -1,2 +1,2 @@
-- src: jeffwidman.ansible-yum-cron
-- src: geerlingguy.ansible-role-repo-epel
+- src: jeffwidman.yum-cron
+- src: geerlingguy.repo-epel
