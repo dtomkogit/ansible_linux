@@ -11,3 +11,13 @@
 
 - name: open firewall ports
   firewalld: port=80/tcp permanent=true state=enabled immediate=yes
+
+- name: copy otrs.service binaries
+  copy: src=otrs.service dest=/etc/systemd/system/otrs.service
+
+- name: enable otrs
+  service: name=otrs enabled=yes
+
+- name: start otrs
+  service: name=otrs state=started
+
